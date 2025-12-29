@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sometimes I am</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Oswald:200,500&display=block" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles-updated.css">
+
+
+  <script type="module" src="app-new.js" defer></script>
+
+</head>
+
+<body>
+
+  <header class="interface">
+
+    <h1>
+      <span class="span-english">sometimes i am</span>
+      <span class="active-sitename" id="active-sitename"></span>
+    </h1>
+
+    <nav aria-label="Language">
+      <label for="language-menu" class="sr-only">Language</label>
+      <select id="language-menu" name="language-menu" class="lang-select">
+        <option value="en" lang="en">English</option>
+        <option value="es" lang="es">Español</option>
+        <option value="fr" lang="fr">Français</option>
+        <option value="it" lang="it">Italiano</option>
+        <option value="de" lang="de">Deutsch</option>
+        <option value="ja" lang="ja">日本語</option>
+        <option value="ko" lang="ko">한국어</option>
+        <option value="fa" lang="fa" dir="rtl">فارسی</option>
+        <option value="ur" lang="ur" dir="rtl">اردو</option>
+      </select>
+    </nav>
+
+    <div class="instruction-wrapper">
+      <h2 class="instruction-text" lang="en">
+        <!-- go ahead: click anywhere. -->
+      </h2>
+    </div>
+  </header>
+
+  <div class="content-container">
+
+    <main class="button-grid">
+    </main>
+
+    <div class="messages-output-wrapper">
+      <div class="message-text"></div>
+      <div class="message-synonym"></div>
+    </div>
+
+    <div class="admin-panel">
+
+      <div class="label-input-wrapper">
+        <label for="maxFZMessage">
+          Maximum Font Size (Message)
+        </label>
+        <input type="range" id="maxFZMessage" name="maxFZMessage" />
+      </div>
+
+      <div class="label-input-wrapper">
+        <label for="maxFZSynonym">
+          Maximum Font Size (Synonym)
+        </label>
+        <input type="range" id="maxFZSynonym" name="maxFZSynonym" />
+      </div>
+
+      <div class="label-input-wrapper">
+        <label for="maxFZMessageNode">
+          Maximum Font Size (Nuclear Message)
+        </label>
+        <input type="range" id="maxFZMessageNode" name="maxFZMessageNode" />
+      </div>
+
+      <div class="label-input-wrapper">
+        <label for="maxFZSynonymNode">
+          Maximum Font Size (Nuclear Synonym)
+        </label>
+        <input type="range" id="maxFZSynonymNode" name="maxFZSynonymNode" />
+      </div>
+
+      <div class="label-input-wrapper">
+        <label for="nodeOpacityBtmLimit">
+          Added Text Opacity Bottom Limit
+        </label>
+        <input type="range" id="nodeOpacityBtmLimit" name="nodeOpacityBtmLimit" />
+      </div>
+
+      <div class="label-input-wrapper">
+        <label for="nodeOpacityTopLimit">
+          Added Text Opacity Upper Limit
+        </label>
+        <input type="range" id="nodeOpacityTopLimit" name="nodeOpacityTopLimit" />
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
