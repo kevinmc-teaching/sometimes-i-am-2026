@@ -13,7 +13,7 @@ export function loadSounds(lang) {
   for (let i = 1; i < soundsNumber; i++) {
     const full_lang = LANG_MAP[lang]
     const recording = TEXTDATA[lang][i].sound
-    const recordingPath = `../sounds/${full_lang}/${recording}`
+    const recordingPath = `./sounds/${full_lang}/${recording}`
     const audio = document.createElement("audio")
     audio.id = `sound-${i}`
     audio.dataset.playing = "false"
@@ -35,8 +35,8 @@ export function randomSound(language, soundNum = 10, sound) {
   // console.log(language, soundNum, sound)
   const audio = document.createElement("audio")
   const contentContainer = document.querySelector(".content-container")
-  // const path = `../sounds/${LANG_MAP[language]}/${TEXTDATA[language][soundNum][sound]}`
-  const path = `../sounds/${LANG_MAP[language]}/${sound}`
+  // const path = `./sounds/${LANG_MAP[language]}/${TEXTDATA[language][soundNum][sound]}`
+  const path = `./sounds/${LANG_MAP[language]}/${sound}`
   // console.log("RANDOM SOUND PATH: ", path)
   audio.src = path
   audio.id = `random-sound-${language}-${soundNum}`
