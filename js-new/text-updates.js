@@ -4,11 +4,20 @@ import { TEXTDATA } from "./text-data.js"
 import { config } from "./config.js"
 import * as sounds from "./sounds.js"
 
-export function updateUIText() {
-  const activeSitenameSpan = document.getElementById("active-sitename")
-  const lang = state.getLang()
-  const instructionTextSpan = document.querySelector(".instruction-text")
-  const langMenu = document.getElementById("language-menu")
+const activeSitenameSpan = document.getElementById("active-sitename")
+const instructionTextSpan = document.querySelector(".instruction-text")
+const langMenu = document.getElementById("language-menu")
+
+export function hideInstructions() {
+  instructionTextSpan.style.display = "none"
+}
+
+export function showInstructions() {
+  instructionTextSpan.style.display = "block"
+}
+
+export function updateUIText(lang) {
+  // const lang = state.getLang()
   const optionDefault = langMenu.querySelector(`option[value=${lang}`)
   optionDefault.selected = true
 

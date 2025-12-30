@@ -5,12 +5,14 @@ import * as state from "./state/language-state.js"
 import * as textUpdates from "./text-updates.js"
 
 const langMenu = document.getElementById("language-menu")
+const btnConfig = document.querySelector(".btn-config")
+const adminPanel = document.querySelector(".admin-panel")
 
 export function menuSetup() {
   const lang = state.getLang()
   const optionDefault = langMenu.querySelector(`option[value=${lang}]`)
   optionDefault.selected = true
-  ui.showInstructions()
+  textUpdates.showInstructions()
 
   document.body.classList.add(`lang-${lang}`)
 
@@ -20,14 +22,20 @@ export function menuSetup() {
 
     state.setLang(langChoice)
     state.resetUpdatesNum()
-    ui.updateInstructionsText(langChoice)
-    ui.showInstructions()
+    textUpdates.updateUIText(langChoice)
+    textUpdates.showInstructions()
     buttons.removeButtons()
     buttons.addButtons()
     toggleBodyLangClass(langChoice)
     sounds.removeSounds()
     sounds.loadSounds(langChoice)
     textUpdates.removeTextNodes()
+  })
+
+  // ignore language menu clicks, but hide instructions if anywhere else is clicked.
+  window.addEventListener("click", (e) => {
+    if (e.target.closest("#language-menu")) return // ignore select menu clicks
+    textUpdates.hideInstructions()
   })
 }
 
@@ -39,3 +47,7 @@ function toggleBodyLangClass(newClass) {
   })
   document.body.classList.add(`lang-${newClass}`)
 }
+
+btnConfig.addEventListener("click", () => {
+  adminPanel.classList.toggle("admin-visible")
+})

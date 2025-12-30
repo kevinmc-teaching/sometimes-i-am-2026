@@ -138,11 +138,50 @@ h1 span {
 
 nav[aria-label="Language"] {
   display: flex;
+  flex-flow: column nowrap;
   justify-content: center;
   z-index: 1000;
 }
 
+.nav-button-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: .5rem;
+}
+
+.nav-button-wrapper button {
+  border: none;
+  background-color: transparent;
+  /* border: 1px solid black; */
+  outline: 1px solid var(--dimmed);
+  padding: 2px;
+  flex-grow: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--dimmed)
+}
+
+.nav-button-wrapper svg {
+
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.nav-button-wrapper button:hover {
+  background-color: black;
+}
+
+.nav-button-wrapper button:hover svg {
+  /* fill: var(--dimmed); */
+}
+
+
 select.lang-select {
+
+  flex-grow: 1;
   margin: auto;
   color: var(--activeSitename);
   background-color: white;
@@ -232,11 +271,6 @@ h1 .span-english {
 
 
 
-
-.instruction-text::after {}
-
-
-
 .instruction-wrapper.inactivated {
   opacity: 0;
   z-index: -1;
@@ -261,11 +295,6 @@ h1 .span-english {
   row-gap: 0rem;
   column-gap: 2rem;
   line-height: 1;
-}
-
-.nuclear .messages-output-wrapper .message-text,
-.nuclear .messages-output-wrapper .message-synonym {
-  /* display: none; */
 }
 
 .message-text {
@@ -299,8 +328,118 @@ h1 .span-english {
 }
 
 .admin-panel {
-  display: none;
+  /* display: none; */
+  font-size: .8rem;
+  padding: 1rem;
+  position: absolute;
+  z-index: 1000;
+  background-color: rgb(255 255 255 .8);
+  backdrop-filter: blur(5px);
+  left: 0;
+  right: 0;
+  bottom: -100%;
+  transition: all .5s;
 }
+
+.admin-visible {
+  display: block;
+  bottom: 0;
+}
+
+.admin-panel .label-input-wrapper {
+  display: grid;
+  grid-template-columns: 200px 200px;
+
+  @media screen and (max-width: 400px) {
+    grid-template-columns: auto auto;
+  }
+}
+
+#maxFZMessage, #maxFZSynonym, #maxFZMessageNode, #maxFZSynonymNode, #nodeOpacityBtmLimit, #nodeOpacityTopLimit {}
+
+#reset-to-defaults {
+  justify-self: start;
+}
+
+
+
+/* Chrome / Edge / Safari */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #e63946;
+  margin-top: -5px;
+  /* aligns thumb */
+  cursor: pointer;
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #e63946;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/* Custom color for range sliders ======================= */
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+/* TRACK: Chrome / Edge / Safari */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* TRACK: Firefox */
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+}
+
+/* THUMB: Chrome / Edge / Safari */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--englishSitename);
+  margin-top: -5px;
+  /* aligns thumb */
+  cursor: pointer;
+}
+
+/* THUMB: Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--englishSitename);
+  border: none;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
 
 /* 
 .admin-panel {
@@ -330,9 +469,9 @@ h1 .span-english {
  */
 
 
-.admin-data {
+/* .admin-data {
   display: none;
-}
+} */
 
 
 .visually-hidden,

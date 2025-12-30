@@ -31,9 +31,8 @@ export const LANG_MAP = {
   ko: "korean",
 }
 
-export function testNormalization(lang) {
-  console.log("Normalization lang passed: ", lang)
-  console.log(TEXTDATA[lang])
+export function testNormalization() {
+  console.log(TEXTDATA.en)
 }
 
 // With each language array, return an object in which soundNum is the primary key, keyed to object with soundNum, text, synonyn, and sound keys.

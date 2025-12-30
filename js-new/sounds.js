@@ -45,18 +45,17 @@ export function randomSound(language, soundNum = 10, sound) {
 }
 
 export function playSound(btnId = 1) {
-  // reduce volume of active sounds
-  // manageActiveSounds()
-
-  // console.log("PLAY SOUND CALLED FOR BUTTON ID: ", btnId)
   const sound = document.querySelector(`#sound-${btnId}`)
-  // console.log("Sound element found:", sound)
+  if (!sound) return
+
+  const i = activeSounds[sound]
+  if (i !== -1) activeSounds.splice(i, 1)
+  activeSounds.unshift(sound)
+
+  sound.volume = baseVolume
   sound.play()
-  addSoundListeners(sound)
-  // activeSounds.unshift(audio)
-  // audio.play()
-  // manageActiveSounds(audio)
-  // console.log(activeSounds)
+
+  manageActiveSounds()
 }
 
 function addSoundListeners(sound) {
@@ -70,16 +69,15 @@ function addSoundListeners(sound) {
     sound.dataset.playing = "false"
     sound.volume = baseVolume
     const index = activeSounds.indexOf(sound)
-    activeSounds.splice(activeSounds.indexOf(sound), 1)
-    // console.log(activeSounds)
+    if (index !== -1) activeSounds.splice(index, 1)
   })
 }
 
-function manageActiveSounds(audio) {
+function manageActiveSounds() {
   activeSounds.forEach((sound, index) => {
     if (sound.dataset.playing === "true") {
-      const newVolume = baseVolume - (index + 1) * fadeFactor
-      sound.volume = newVolume >= minVolume ? newVolume : minVolume
+      const newVolume = baseVolume - index * fadeFactor
+      sound.volume = Math.max(newVolume, minVolume)
     }
   })
 }

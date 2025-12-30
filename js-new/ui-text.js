@@ -1,10 +1,3 @@
-import * as state from "./state/language-state.js"
-
-window.addEventListener("click", (e) => {
-  if (e.target.closest("#language-menu")) return // ignore select menu clicks
-  hideInstructions()
-})
-
 export const SITENAMES = {
   en: "sometimes i am",
   fr: "parfois je suis",
@@ -27,30 +20,4 @@ export const INSTRUCTIONS = {
   ur: "آگے بڑھیں: کہیں بھی کلک کریں...",
   de: "los geht’s: klick irgendwo",
   ko: "해보세요: 아무곳이나 눌러보세요 (클릭, 터치)",
-}
-
-export function updateInstructionsText(langChoice) {
-  const activeSitenameSpan = document.getElementById("active-sitename")
-  const instructionTextSpan = document.querySelector(".instruction-text")
-  const langMenu = document.getElementById("language-menu")
-  const lang = state.getLang()
-  const optionDefault = langMenu.querySelector(`option[value=${lang}`)
-  optionDefault.selected = true
-
-  document.body.className = ""
-  document.body.classList.add(`lang-${lang}`)
-
-  activeSitenameSpan.textContent = SITENAMES[lang]
-  instructionTextSpan.textContent = `[ ${INSTRUCTIONS[lang]} ]`
-  instructionTextSpan.textContent = `${INSTRUCTIONS[lang]}`
-}
-
-export function hideInstructions() {
-  const instructionTextSpan = document.querySelector(".instruction-text")
-  instructionTextSpan.style.display = "none"
-}
-
-export function showInstructions() {
-  const instructionTextSpan = document.querySelector(".instruction-text")
-  instructionTextSpan.style.display = "block"
 }
