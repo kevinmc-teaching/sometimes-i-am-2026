@@ -29,7 +29,7 @@ export function addButtons() {
     buttonContainer.appendChild(btn)
     btn.textContent = i + 1
   }
-  // Add event listeners to parent container for event delegation.
+
   buttonContainer.addEventListener("click", doButtonStuff)
   buttonContainer.addEventListener("pointerover", doButtonStuff)
 }
@@ -45,9 +45,7 @@ function doButtonStuff(e) {
 
   if (state.getUpdatesNum() >= config.nuclearTrigger) {
     textUpdates.newTextNode()
-    // console.log("NUCLEAR TRIGGERED")
   } else {
-    // console.log("NOT YET NUCLEAR")
     const messageText = document.querySelector(".message-text")
     const messageSynonym = document.querySelector(".message-synonym")
     const targetedElement = e.target

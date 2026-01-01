@@ -1,6 +1,7 @@
 import { config } from "../config.js"
 
 let updatesNum = 0
+let updatesSinceNuclear = 0
 let currentBtn = 1
 let nuclear = false
 let randomLang = "en"
@@ -27,6 +28,19 @@ export function getLang() {
 // READ UPDATE COUNT
 export function getUpdatesNum() {
   return updatesNum
+}
+
+// All-LANGUAGE SECTION
+export function setUpdatesSinceNuclear() {
+  localStorage.setItem("updatesSinceNuclear", updatesSinceNuclear)
+}
+
+export function incrementUpdatesSinceNuclear() {
+  updatesSinceNuclear += 1
+}
+
+export function getUpdatesSinceNuclear() {
+  return updatesSinceNuclear
 }
 
 // INCREMENT UPDATE COUNT
