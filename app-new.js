@@ -12,11 +12,6 @@ textUpdates.updateUIText(lang)
 sounds.loadSounds(lang)
 
 buttons.addButtons()
-
-// for testing normalization
-import * as textData from "./js-new/text-data.js"
-textData.testNormalization(lang)
+config.syncAdminPanelFromConfig()
 
 // config.createConfigPanel()
-
-

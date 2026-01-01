@@ -347,7 +347,7 @@ h1 .span-english {
 
 .admin-panel .label-input-wrapper {
   display: grid;
-  grid-template-columns: 200px 200px;
+  grid-template-columns: 300px 120px;
 
   @media screen and (max-width: 400px) {
     grid-template-columns: auto auto;

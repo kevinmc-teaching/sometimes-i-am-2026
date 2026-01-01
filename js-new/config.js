@@ -1,3 +1,6 @@
+import { PREFERENCES_TEXT } from "./ui-text.js"
+import { getLang } from "./state/language-state.js"
+
 export const config = {
   nuclearTrigger: 60,
   nuclearEnd: 500,
@@ -29,26 +32,53 @@ export const configResetData = {
 }
 
 const adminPanel = document.querySelector(".admin-panel")
+const openPrefsBtn = document.querySelector(".btn-config")
+const resetCheckbox = adminPanel.querySelector("#reset-to-defaults")
 
 // live updates for sliders + checkbox handling
-adminPanel.addEventListener("input", handleAdminChange)
+// adminPanel.addEventListener("input", handleAdminChange)
 adminPanel.addEventListener("change", handleAdminChange)
 
+// when user opens the preferences panel, translate first
+openPrefsBtn.addEventListener("click", () => {
+  const lang = getLang()
+  translatePreferenceLabels(lang)
+  openPreferencesPanel()
+})
+
+function translatePreferenceLabels(lang) {
+  const dict = PREFERENCES_TEXT?.[lang] ?? PREFERENCES_TEXT?.en ?? {}
+
+  // find all labels inside the admin panel that point to a control
+  const labels = adminPanel.querySelectorAll("label[for]")
+
+  labels.forEach((label) => {
+    const key = label.getAttribute("for") // e.g. "maxFZMessage" or "reset-to-defaults"
+    const translated = dict[key]
+
+    if (typeof translated === "string" && translated.trim()) {
+      label.textContent = translated
+    }
+  })
+}
+
+// replace with your own show logic
+function openPreferencesPanel() {
+  adminPanel.classList.add("admin-visible")
+}
+
 function handleAdminChange(e) {
-  const target = e.target
-  if (!(target instanceof HTMLInputElement)) return
+  const input = e.target.closest("input")
+  if (!input || !adminPanel.contains(input)) return
 
-  const { id, type, value, checked } = target
+  const { id, type, value, checked } = input
 
-  // RESET checkbox
   if (type === "checkbox" && id === "reset-to-defaults") {
     if (checked) resetToDefaults()
-    // make it behave like a button
-    target.checked = false
+    input.checked = false
     return
   }
 
-  // RANGE sliders
   if (type === "range") {
     updateConfig(id, value)
   }

@@ -30,6 +30,7 @@ export function menuSetup() {
     sounds.removeSounds()
     sounds.loadSounds(langChoice)
     textUpdates.removeTextNodes()
+    syncAdminPanelFromConfig()
   })
 
   // ignore language menu clicks, but hide instructions if anywhere else is clicked.
@@ -47,7 +48,3 @@ function toggleBodyLangClass(newClass) {
   })
   document.body.classList.add(`lang-${newClass}`)
 }
-
-btnConfig.addEventListener("click", () => {
-  adminPanel.classList.toggle("admin-visible")
-})

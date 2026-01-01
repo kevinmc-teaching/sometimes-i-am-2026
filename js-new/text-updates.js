@@ -51,14 +51,14 @@ export function newTextNode() {
   // Destructuring object returned from randomTextBlock function creates five variables.
   const { language, text, synonym, sound, number } = randomTextBlock()
 
-  console.log(
-    "RANDOM TEXT BLOCK DATA: ",
-    language,
-    text,
-    synonym,
-    sound,
-    number
-  )
+  // console.log(
+  //   "RANDOM TEXT BLOCK DATA: ",
+  //   language,
+  //   text,
+  //   synonym,
+  //   sound,
+  //   number
+  // )
 
   const newNodeWrapper = document.createElement("div")
   newNodeWrapper.classList.add("new-text-node")
