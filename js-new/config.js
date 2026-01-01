@@ -64,7 +64,7 @@ function translatePreferenceLabels(lang) {
 
 // replace with your own show logic
 function openPreferencesPanel() {
-  adminPanel.classList.add("admin-visible")
+  adminPanel.classList.toggle("admin-visible")
 }
 
 function handleAdminChange(e) {
