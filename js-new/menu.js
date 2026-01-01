@@ -3,6 +3,7 @@ import * as buttons from "./buttons.js"
 import * as sounds from "./sounds.js"
 import * as state from "./state/language-state.js"
 import * as textUpdates from "./text-updates.js"
+import * as config from "./config.js"
 
 const langMenu = document.getElementById("language-menu")
 const btnConfig = document.querySelector(".btn-config")
@@ -30,7 +31,7 @@ export function menuSetup() {
     sounds.removeSounds()
     sounds.loadSounds(langChoice)
     textUpdates.removeTextNodes()
-    syncAdminPanelFromConfig()
+    config.syncAdminPanelFromConfig()
   })
 
   // ignore language menu clicks, but hide instructions if anywhere else is clicked.

@@ -107,7 +107,7 @@ export function resetToDefaults() {
   console.log("RESET TO DEFAULTS", { ...config })
 }
 
-function syncAdminPanelFromConfig() {
+export function syncAdminPanelFromConfig() {
   const sliders = adminPanel.querySelectorAll("input[type='range']")
 
   sliders.forEach((slider) => {
