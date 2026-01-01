@@ -8,6 +8,9 @@ const activeSitenameSpan = document.getElementById("active-sitename")
 const instructionTextSpan = document.querySelector(".instruction-text")
 const langMenu = document.getElementById("language-menu")
 
+const messageTextEl = document.querySelector(".message-text")
+const messageSynonymEl = document.querySelector(".message-synonym")
+
 export function hideInstructions() {
   instructionTextSpan.style.display = "none"
 }
@@ -29,19 +32,18 @@ export function updateUIText(lang) {
   instructionTextSpan.textContent = `${INSTRUCTIONS[lang]}`
 }
 
-export function updateMainText() {
+export function updateMainText(btnIdOverride) {
   const lang = state.getLang()
-  const btnId = state.getCurrentBtn()
+  const btnId = Number(btnIdOverride ?? state.getCurrentBtn())
 
-  const messageText = document.querySelector(".message-text")
-  const messageSynonym = document.querySelector(".message-synonym")
+  const entry = TEXTDATA?.[lang]?.[btnId]
+  if (!entry) return
 
-  messageText.textContent = TEXTDATA[lang][btnId].text
-  messageText.style.fontSize = randomFontSize(config.maxFZMessage)
-  messageSynonym.textContent = TEXTDATA[lang][btnId].synonym
-  messageText.style.fontSize = randomFontSize(config.maxFZSynonym)
+  messageTextEl.textContent = entry.text ?? ""
+  messageTextEl.style.fontSize = randomFontSize(config.maxFZMessage)
 
-  // console.log("TEXT UPDATED ", state.getUpdatesNum(), " TIMES")
+  messageSynonymEl.textContent = entry.synonym ?? ""
+  messageSynonymEl.style.fontSize = randomFontSize(config.maxFZSynonym)
 }
 
 export function newTextNode() {

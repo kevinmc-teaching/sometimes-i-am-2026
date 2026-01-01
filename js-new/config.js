@@ -37,6 +37,7 @@ const resetCheckbox = adminPanel.querySelector("#reset-to-defaults")
 
 // live updates for sliders + checkbox handling
 // adminPanel.addEventListener("input", handleAdminChange)
+adminPanel.addEventListener("input", handleAdminChange)
 adminPanel.addEventListener("change", handleAdminChange)
 
 // when user opens the preferences panel, translate first
@@ -62,9 +63,10 @@ function translatePreferenceLabels(lang) {
   })
 }
 
-// replace with your own show logic
 function openPreferencesPanel() {
-  adminPanel.classList.toggle("admin-visible")
+  const isOpen = adminPanel.classList.toggle("admin-visible")
+  adminPanel.setAttribute("aria-hidden", String(!isOpen))
+  openPrefsBtn.setAttribute("aria-expanded", String(isOpen))
 }
 
 function handleAdminChange(e) {

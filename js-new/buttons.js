@@ -21,14 +21,17 @@ export function addButtons() {
 
   buttonContainer.classList.add(gridClass)
 
-  // Create buttons based on btnQuantity
+  // Create buttons based on btnQuantity (use a fragment to avoid repeated reflow)
+  const frag = document.createDocumentFragment()
   for (let i = 0; i < btnQuantity; i++) {
     const btn = document.createElement("button")
+    btn.type = "button"
     btn.className = `btn-${i + 1}`
-    btn.dataset.buttonId = i + 1
-    buttonContainer.appendChild(btn)
-    btn.textContent = i + 1
+    btn.dataset.buttonId = String(i + 1)
+    btn.textContent = String(i + 1)
+    frag.appendChild(btn)
   }
+  buttonContainer.appendChild(frag)
 
   buttonContainer.addEventListener("click", doButtonStuff)
   buttonContainer.addEventListener("pointerover", doButtonStuff)
@@ -43,19 +46,21 @@ export function removeButtons() {
 function doButtonStuff(e) {
   if (e.type === "pointerover" && e.pointerType !== "mouse") return
 
+  const targetedElement = e.target
+  if (!targetedElement || targetedElement.tagName !== "BUTTON") return
+
+  const btnId = Number(targetedElement.dataset.buttonId)
+  if (!Number.isFinite(btnId)) return
+
+  // Keep the current button in state first so downstream functions read the right value
+  state.updateCurrentBtn(btnId)
+
   if (state.getUpdatesNum() >= config.nuclearTrigger) {
     textUpdates.newTextNode()
-  } else {
-    const messageText = document.querySelector(".message-text")
-    const messageSynonym = document.querySelector(".message-synonym")
-    const targetedElement = e.target
-    if (targetedElement.tagName === "BUTTON") {
-      const btnId = +targetedElement.dataset.buttonId
-      // console.log("BUTTON ID: ", btnId)
-      textUpdates.updateMainText()
-      sounds.playSound(btnId)
-      state.incrementUpdatesNum()
-      state.updateCurrentBtn(btnId)
-    }
+    return
   }
+
+  textUpdates.updateMainText(btnId)
+  sounds.playSound(btnId)
+  state.incrementUpdatesNum()
 }

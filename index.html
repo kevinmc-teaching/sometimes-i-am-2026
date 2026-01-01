@@ -59,12 +59,12 @@
     <main class="button-grid">
     </main>
 
-    <div class="messages-output-wrapper">
-      <div class="message-text"></div>
-      <div class="message-synonym"></div>
+    <div class="messages-output-wrapper" aria-live="polite" aria-atomic="true">
+      <div class="message-text" role="status"></div>
+      <div class="message-synonym" role="status"></div>
     </div>
 
-    <div class="admin-panel">
+    <form class="admin-panel" id="preferences-panel" aria-label="Preferences" aria-hidden="true">
 
       <div class="label-input-wrapper">
         <label for="nuclearTrigger">
@@ -128,7 +128,7 @@
         <input type="checkbox" id="reset-to-defaults">
       </div>
 
-    </div>
+    </form>
 
   </div>
 
