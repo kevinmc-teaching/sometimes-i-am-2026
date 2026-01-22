@@ -486,6 +486,7 @@ input[type="checkbox"]:focus-visible {
 
 /* Accessibility: respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -494,4 +495,11 @@ input[type="checkbox"]:focus-visible {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+
+/* TEMPORARY ========================== */
+
+.nav-button-wrapper button {
+  /* display: none; */
 }

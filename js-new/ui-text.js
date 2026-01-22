@@ -198,5 +198,21 @@ export const PREFERENCES_TEXT = {
   ko: {
     nuclearTrigger: "핵: 시작 임계값",
     nuclearEnd: "핵: 종료 임계값",
+
+    maxFZMessage: "메인 기본 텍스트: 최대 글꼴 크기",
+    maxFZSynonym: "메인 보조 텍스트: 최대 글꼴 크기",
+
+    maxFZMessageNode: "핵 기본 텍스트: 최대 글꼴 크기",
+    maxFZSynonymNode: "핵 보조 텍스트: 최대 글꼴 크기",
+
+    baseVolume: "기본 볼륨",
+    fadeFactor: "페이드 계수",
+    minVolume: "최소 볼륨",
+
+    nodeOpacityBtmLimit: "핵 기본 텍스트: 불투명도 하한",
+    nodeOpacityTopLimit: "핵 보조 텍스트: 불투명도 상한",
+
+    hideMainTextAtNuclear: "핵 모드에서 메인 텍스트 숨기기",
+    "reset-to-defaults": "기본값으로 재설정",
   },
 }

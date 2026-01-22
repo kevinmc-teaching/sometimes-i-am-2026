@@ -13,5 +13,3 @@ sounds.loadSounds(lang)
 
 buttons.addButtons()
 config.syncAdminPanelFromConfig()
-
-// config.createConfigPanel()

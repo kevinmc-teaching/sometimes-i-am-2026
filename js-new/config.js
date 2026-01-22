@@ -36,7 +36,6 @@ const openPrefsBtn = document.querySelector(".btn-config")
 const resetCheckbox = adminPanel.querySelector("#reset-to-defaults")
 
 // live updates for sliders + checkbox handling
-// adminPanel.addEventListener("input", handleAdminChange)
 adminPanel.addEventListener("input", handleAdminChange)
 adminPanel.addEventListener("change", handleAdminChange)
 
