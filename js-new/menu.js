@@ -24,7 +24,14 @@ export function menuSetup() {
     state.setLang(langChoice)
     state.resetUpdatesNum()
     textUpdates.updateUIText(langChoice)
-    textUpdates.showInstructions()
+    
+
+    // If preferences panel is currently open, re-translate its labels immediately
+    const adminPanel = document.querySelector(".admin-panel")
+    if (adminPanel?.classList?.contains("admin-visible")) {
+      config.translatePreferenceLabels(langChoice)
+    }
+textUpdates.showInstructions()
     buttons.removeButtons()
     buttons.addButtons()
     toggleBodyLangClass(langChoice)

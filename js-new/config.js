@@ -41,12 +41,37 @@ adminPanel.addEventListener("change", handleAdminChange)
 
 // when user opens the preferences panel, translate first
 openPrefsBtn.addEventListener("click", () => {
-  const lang = getLang()
-  translatePreferenceLabels(lang)
+  translatePreferenceLabels()
   openPreferencesPanel()
 })
 
-function translatePreferenceLabels(lang) {
+// keyboard shortcut: type "@@@" to toggle the preferences panel (and translate labels first)
+;(() => {
+  let buffer = ""
+  const TRIGGER = "@@@"
+
+  document.addEventListener("keydown", (e) => {
+    // ignore when user is typing in a form field or editable region
+    const t = e.target
+    const tag = t && t.tagName
+    if (tag === "INPUT" || tag === "TEXTAREA" || t?.isContentEditable) return
+
+    // only react to single-character keys (ignore Shift, Arrow keys, etc.)
+    if (typeof e.key !== "string" || e.key.length !== 1) return
+
+    buffer = (buffer + e.key).slice(-TRIGGER.length)
+
+    if (buffer === TRIGGER) {
+      // mirror the button behavior: translate then toggle open/close
+      translatePreferenceLabels()
+      openPreferencesPanel()
+      buffer = ""
+    }
+  })
+})()
+
+
+export function translatePreferenceLabels(lang = getLang()) {
   const dict = PREFERENCES_TEXT?.[lang] ?? PREFERENCES_TEXT?.en ?? {}
 
   // find all labels inside the admin panel that point to a control

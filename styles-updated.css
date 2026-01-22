@@ -501,5 +501,5 @@ input[type="checkbox"]:focus-visible {
 /* TEMPORARY ========================== */
 
 .nav-button-wrapper button {
-  /* display: none; */
+  display: none;
 }

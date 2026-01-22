@@ -22,13 +22,15 @@ Currently, the following settings are active:
   nodeOpacityBtmLimit: lower limit of random opacity for added text nodes (.2 = 20% opacity)
   nodeOpacityTopLimit: upper limit of random opacity for added text nodes (.2 = 20% opacity)
 
-Other values are not currently operational, but will become so at a later date. 
+Some other values are not currently operational, but will become so at a later date. 
 
 To change settings, change a value, save the file, and then reload the page to test.
 
 Note: the file config-original-settings.js contains the original values I have used, so if you bork the app, you can always just copy the config object from that file.
 
 ====================
+
+To Invoke or Dismiss the Preferences Panel, type @@@ on your keyboard. It will appear in the currently active language (which you can of course change with the drop down menu).
 
 ADDING A NEW LANGUAGE
 To add a new language to the project, duplicate an existing language file. Those files are contained in js-new/language-data.
