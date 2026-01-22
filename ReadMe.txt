@@ -30,7 +30,12 @@ Note: the file config-original-settings.js contains the original values I have u
 
 ====================
 
+PREFERENCES PER SESSION VIA KEYBOARD SHORTCUT
 To Invoke or Dismiss the Preferences Panel, type @@@ on your keyboard. It will appear in the currently active language (which you can of course change with the drop down menu).
+
+These PREFERENCES changes do not persist beyond page reload, but this will be added in future.
+
+====================
 
 ADDING A NEW LANGUAGE
 To add a new language to the project, duplicate an existing language file. Those files are contained in js-new/language-data.
